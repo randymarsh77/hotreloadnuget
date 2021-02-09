@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net5</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<PackAsTool>true</PackAsTool>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Watch Include="*.nupkg"  />
+	</ItemGroup>
+</Project>

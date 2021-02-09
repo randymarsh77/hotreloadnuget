@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - "*"
+    tags-ignore:
+      - "*"
+  pull_request:
+
+env:
+  DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+
+      - name: Install yarn
+        run: npm i -g yarn
+
+      - name: Build
+        run: |
+          yarn --frozen-lockfile
+          yarn build
+
+      - name: Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: yarn semantic-release
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
