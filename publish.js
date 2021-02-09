@@ -19,7 +19,7 @@ if (!version) {
 		);
 
 		await verifyExec(
-			`dotnet nuget push "release/*.nupkg" -k ${apiKey} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols`
+			`dotnet nuget push "release/*.nupkg" -k ${apiKey} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols 1`
 		);
 	} catch (e) {
 		console.error(e);
