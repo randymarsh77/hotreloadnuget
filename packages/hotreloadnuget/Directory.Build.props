@@ -1,0 +1,21 @@
+<Project>
+	<PropertyGroup>
+		<LangVersion>9.0</LangVersion>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<NoWarn>$(NoWarn);CA1014;CA1308;CA1801;CA1303;</NoWarn>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<DebugType>portable</DebugType>
+		<GitHubOrganization>randymarsh77</GitHubOrganization>
+		<RepositoryName>hotreloadnuget</RepositoryName>
+		<PackageProjectUrl>https://github.com/$(GitHubOrganization)/$(RepositoryName)</PackageProjectUrl>
+		<PackageReleaseNotes>https://github.com/$(GitHubOrganization)/$(RepositoryName)/releases</PackageReleaseNotes>
+		<RepositoryUrl>https://github.com/$(GitHubOrganization)/$(RepositoryName).git</RepositoryUrl>
+		<Authors>Matt Preucil</Authors>
+		<Copyright>Copyright $(Authors)</Copyright>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+</Project>

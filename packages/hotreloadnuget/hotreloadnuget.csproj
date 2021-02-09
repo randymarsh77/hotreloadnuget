@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<PackageId>hotreloadnuget</PackageId>
 		<TargetFramework>net5</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<PackAsTool>true</PackAsTool>

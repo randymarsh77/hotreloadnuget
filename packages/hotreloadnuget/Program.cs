@@ -28,10 +28,10 @@ void OnChanged(object source, FileSystemEventArgs e) => ClearPackageCache();
 void ClearPackageCache()
 {
 	var globalCacheLocation = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget", "packages");
-	var packages = Directory.GetFiles(".").Where(x => x.EndsWith(".nupkg"));
+	var packages = Directory.GetFiles(".").Where(x => x.EndsWith(".nupkg", StringComparison.InvariantCulture));
 	foreach (var package in packages)
 	{
-		var name = string.Join(".", package.Split(".").Skip(1).Reverse().Skip(4).Reverse()).ToLowerInvariant().Replace($"{Path.DirectorySeparatorChar}", "");
+		var name = string.Join(".", package.Split(".").Skip(1).Reverse().Skip(4).Reverse()).ToLowerInvariant().Replace($"{Path.DirectorySeparatorChar}", "", StringComparison.InvariantCulture);
 		var path = Path.Join(globalCacheLocation, name);
 		if (Directory.Exists(path))
 		{
