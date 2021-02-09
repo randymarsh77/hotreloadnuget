@@ -2,9 +2,16 @@ using System;
 using System.IO;
 using System.Linq;
 
+var path = Path.GetFullPath(args.FirstOrDefault() ?? ".");
+if (!Directory.Exists(path))
+{
+	Console.Error.WriteLine($"Path does not exist: {path}");
+	Environment.Exit(1);
+}
+
 using var watcher = new FileSystemWatcher();
 
-watcher.Path = ".";
+watcher.Path = path;
 
 watcher.NotifyFilter = NotifyFilters.LastAccess
 	| NotifyFilters.LastWrite
@@ -20,6 +27,7 @@ watcher.Renamed += OnChanged;
 
 watcher.EnableRaisingEvents = true;
 
+Console.WriteLine($"Watching for package changes in {path}");
 Console.WriteLine("Press 'q' to stop hotreloadnuget.");
 while (Console.Read() != 'q');
 
