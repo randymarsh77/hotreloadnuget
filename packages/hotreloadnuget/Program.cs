@@ -29,7 +29,8 @@ void OnChanged(object source, FileSystemEventArgs e) => ClearPackageCache(e.Name
 
 void ClearPackageCache(string package)
 {
-	var globalCacheLocation = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget", "packages");
+	var globalCacheLocation = Environment.GetEnvironmentVariable("NUGET_PACKAGES")
+		?? Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".nuget", "packages");
 	var name = string.Join(".", package.Split(".").Reverse().Skip(4).Reverse()).ToLowerInvariant();
 	var path = Path.Join(globalCacheLocation, name);
 	if (Directory.Exists(path))
